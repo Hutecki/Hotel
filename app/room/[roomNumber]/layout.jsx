@@ -48,22 +48,7 @@ const RoomLayout = async ({ children, params }) => {
             <FaHome size={32} className="ui-Home" />
           </Link>
           <RoomExtras />
-          <Dialog>
-            <DialogTrigger asChild>
-              <button className="edit_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg">
-                <FaPen size={17} />
-              </button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Aktualizuj pokój</DialogTitle>
-                <DialogDescription>
-                  Aktualizuj dane pokoju: {room.Pokoj}.
-                </DialogDescription>
-              </DialogHeader>
-              <RoomEditForm room={room} />
-            </DialogContent>
-          </Dialog>
+          <RoomEditForm room={room} />
         </div>
       </div>
 

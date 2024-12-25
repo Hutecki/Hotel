@@ -3,7 +3,6 @@
 import connectDB from "@/config/database";
 import Room from "@/models/Room";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 async function updateRoom(roomId, formData) {
   await connectDB();
@@ -23,7 +22,7 @@ async function updateRoom(roomId, formData) {
     throw new Error("Room not found");
   }
 
-  revalidatePath(`/room/${updatedRoom.Pokoj}`);
+  revalidatePath(`/room/${updatedRoom.Pokoj}`); // Revalidate the room's page
 }
 
 export default updateRoom;
