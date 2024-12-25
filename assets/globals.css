@@ -87,13 +87,13 @@ button.ui {
   .Switch {
     bottom: 50% !important;
     top: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    transform: translate(-30%, -30%) !important;
     display: flex;
     flex-direction: row !important;
   }
   .Switch label {
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 12px;
     margin: 0px 6px 0 6px;
   }
   .ui-Home-Container {
