@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
-
+import SearchSwitch from "@/components/SearchSwitch";
 const MainLayout = ({ children }) => {
   return (
     <html>
@@ -25,6 +25,7 @@ const MainLayout = ({ children }) => {
             <Link className="ui-Home-Container absolute left-[10rem]" href="/">
               <FaHome size={32} className="ui-Home" />
             </Link>
+            <SearchSwitch />
           </div>
         </div>
 

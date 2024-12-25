@@ -15,6 +15,11 @@ const AggregateSchema = new Schema({
     type: String,
     required: false, // Optional if not always present
   },
+  Places: [
+    {
+      type: String, // Assuming room names or numbers are stored as strings
+    },
+  ],
 });
 
 const Aggregate = models?.Aggregate || model("Aggregate", AggregateSchema);

@@ -45,7 +45,7 @@ const RoomPage = async ({ params }) => {
   const isStairsOnly = stairsRooms.includes(roomNumber.toString());
 
   return (
-    <div className="main flex flex-col justify-center items-center h-screen p-4">
+    <div className="main flex flex-col justify-start items-center h-screen p-4">
       <div className="print-legend hidden print:block absolute top-0 right-0  text-right text-xs">
         <h1>Legenda:</h1>
         <p>WG - Winda Główna</p>

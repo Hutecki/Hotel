@@ -12,22 +12,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import RoomEditForm from "@/components/RoomEditForm";
 import Room from "@/models/Room";
 import connectDB from "@/config/database";
 export const dynamic = "force-dynamic"; // Disable wrapping from parent layouts
-import { redirect } from "next/navigation";
-import RoomExtras from "@/components/RoomExtras";
 
-const RoomLayout = async ({ children, params }) => {
-  const { roomNumber } = params;
-  if (isNaN(roomNumber)) {
-    return redirect("/err");
-  }
+const PlaceLayout = async ({ children, params }) => {
   await connectDB();
 
   // Fetch the current room details and convert it to plain JSON
-
   const room = await Room.findOne({ Pokoj: params.roomNumber }).lean();
   if (room && room._id) {
     room._id = room._id.toString(); // Convert _id to a string
@@ -44,26 +36,12 @@ const RoomLayout = async ({ children, params }) => {
             width={110}
             height={100}
           />
-          <Link className="ui-Home-Container absolute left-[10rem]" href="/">
+          <Link
+            className="ui-Home-Container absolute left-[10rem]"
+            href="/aggregate"
+          >
             <FaHome size={32} className="ui-Home" />
           </Link>
-          <RoomExtras />
-          <Dialog>
-            <DialogTrigger asChild>
-              <button className="edit_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg">
-                <FaPen size={17} />
-              </button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Aktualizuj pokój</DialogTitle>
-                <DialogDescription>
-                  Aktualizuj dane pokoju: {room.Pokoj}.
-                </DialogDescription>
-              </DialogHeader>
-              <RoomEditForm room={room} />
-            </DialogContent>
-          </Dialog>
         </div>
       </div>
 
@@ -72,4 +50,4 @@ const RoomLayout = async ({ children, params }) => {
   );
 };
 
-export default RoomLayout;
+export default PlaceLayout;

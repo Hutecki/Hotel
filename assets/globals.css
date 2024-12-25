@@ -1,343 +1,314 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .thin-italic {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
-    font-style: italic;
-    
-  }
-  /* Legend description  */
-  p.Alt
-  {
-    position: absolute;
-    top:25px;
-    right:220px; 
-  }
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: transparent;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+/* Legend description  */
+p.Alt {
+  position: absolute;
+  top: 25px;
+  right: 220px;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: transparent;
   /* Optional: Set background color */
-  }
-  .navbar
-  {
-    width: 100%;
-  }
-  .loading-image {
-    width: 160px; /* Adjust size as needed */
-    height: 240px; /* Adjust size as needed */
-    animation: scale .7s infinite; /* Animation name, duration, and repetition */
-  }
-  
-  @keyframes scale {
-    0% {
-      transform: scale(1);
-    }
-    20% {
-      transform: scale(1.2); /* Adjust the scaling factor */
-    }
-     40%
-     {
-      transform: scale(0.6);
-     }
-     60%
-     {
-      transform: scale(0);
-     }
-     80%
-     {
-      transform: scale(0.5);
-     }
-    100% {
-      transform: scale(1);
-    }
-  }
-  .ui, .ui-Home, .ui-Print 
-  {
-    color: 	#C19A6B !important; 
-  }
-  .ui-Link
-  {
-    background-color: #C19A6B !important;
-    color: white;
-  }
-  div.ui 
-  {
-    background-color: #C19A6B;
-    color:white !important;
-  }
-  button.ui 
-  {
-    background-color: #C19A6B;
-    color:white !important;
+}
+.navbar {
+  width: 100%;
+}
+.loading-image {
+  width: 160px; /* Adjust size as needed */
+  height: 240px; /* Adjust size as needed */
+  animation: scale 0.7s infinite; /* Animation name, duration, and repetition */
+}
 
+@keyframes scale {
+  0% {
+    transform: scale(1);
   }
- 
-.ui:hover, .ui-Link:hover
-{
-  background-color: rgba(193,154,107,0.9) !important;
+  20% {
+    transform: scale(1.2); /* Adjust the scaling factor */
+  }
+  40% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.ui-Home:hover
-{
-  color:rgba(193,154,107,0.9) !important;
+.ui,
+.ui-Home,
+.ui-Print {
+  color: #c19a6b !important;
 }
-.ui-Print:hover 
-{
-  color:rgba(193,154,107,0.9) !important;
+.ui-Link {
+  background-color: #c19a6b !important;
+  color: white;
 }
-  /* Phone view styling */
+div.ui {
+  background-color: #c19a6b;
+  color: white !important;
+}
+button.ui {
+  background-color: #c19a6b;
+  color: white !important;
+}
 
-  @media(max-width:763px)
-  {
-    .ui-Home-Container
-    {
-     left: 90%;
-    }
-    .add_button {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      z-index: 50;
-    }
-  
-    .edit_button {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      z-index: 51;
-    }
-    
-    .room-detail .add_button {
-      display: none !important;
-    }
-    .room 
-    {
-      margin-top: 75rem;
-    }
-    .print-btn
-    {
-      display: none;
-    }
-    .thin-italic
-    {   
-        font-size: 17px;
-        color: #3b3b3b;
-        font-weight: bold;
-    }
-    .thin-italic.Alt 
-    {
-     
-          font-weight: 300;
-          font-size: 15px;
-          color: #3b3b3b;
-    }
-    .focused {
-      transform: translateY(-50px) !important; 
-      transition: transform 0.3s ease-in-out; 
-    }
-   .legend-container
-   {
-    top: 6rem;
-   }
+.ui:hover,
+.ui-Link:hover {
+  background-color: rgba(193, 154, 107, 0.9) !important;
+}
+.ui-Home:hover {
+  color: rgba(193, 154, 107, 0.9) !important;
+}
+.ui-Print:hover {
+  color: rgba(193, 154, 107, 0.9) !important;
+}
+/* Phone view styling */
+.main {
+  justify-content: start;
+}
+@media (max-width: 763px) {
+  .ui-Home-Container {
+    left: 90%;
+  }
+  .add_button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 50;
+  }
+
+  .edit_button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 51;
+  }
+  .main {
+    justify-content: start;
+    margin-top: 10rem;
+  }
+
+  .room-detail .add_button {
+    display: none !important;
+  }
+  .room {
+    margin-top: 75rem;
+  }
+  .print-btn {
+    display: none;
+  }
+  .thin-italic {
+    font-size: 17px;
+    color: #3b3b3b;
+    font-weight: bold;
+  }
+  .thin-italic.Alt {
+    font-weight: 300;
+    font-size: 15px;
+    color: #3b3b3b;
+  }
+  .focused {
+    transform: translateY(-50px) !important;
+    transition: transform 0.3s ease-in-out;
   }
   .legend-container {
-    width: max-content;
-    transition: transform 0.3s ease-in-out;
+    top: 6rem;
   }
-  
-  .legend-container.translate-x-full {
-    transform: translateX(100%);
-  }
-  
-  .legend-container.translate-x-0 {
-    transform: translateX(0);
-  }
-  
-  .legend-toggle-button {
-    position: absolute;
-    top:-6px; 
-    left: -2rem; 
-    transition: transform 0.3s ease-in-out;
-   height: 32px;
-  }
-  
-  .chevron-icon.rotate-180 {
-    transform: rotate(180deg);
-  }
-  
-  .chevron-icon.rotate-0 {
-    transform: rotate(0deg);
-  }
-
-  .chevron-icon 
-  {
-    position: relative;
-    top:-25%;
-  }
-
-  .flex-col
-  {
-    transform: translateY(-10%);
-  }
-  /* print view styling  */
-  @media print {
-    .print:hidden,
-    .legend,
-    .credits,
-    .navbar
-    { 
-      display: none !important;
-    }
-
-    .credits {
-      page-break-before: auto;
-    }
-    .print-legend
-    {
-      z-index: 100;
-    }
-    * {
-      margin:0 !important;
-      padding: 0 !important;
-    }
-
-    .fixed 
-    {
-      display: none;
-    }
- 
-  
-
-    table {
-      width: 100% !important;
-      border-collapse: collapse !important;
-      height: 40%;
-      margin-top: 0px;
-    }
-    
-     h1.print
-     {
-      margin-top: 10rem !important;
-     }
-    th,
-    td {
-      border: 1px solid #000 !important;
-      padding: 15px !important; 
-      text-align: left !important;
-    
-    }
-
-    .print-legend {
-      transform: translateY(100%);
-      text-align: center;
-      display: block !important;
-      font-size: 0.5rem !important;
-    }
-  
-    .print-legend p
-    {
-      margin-top: 8px !important;
-      font-size: 1.2rem !important;
-    }
-    .print-legend h1
-    {
-      margin-bottom: 20px !important;
-      font-size: 1.5rem !important;
-    }
-
-    h1 {
-      font-size: 2.5rem !important; 
-      text-align: center !important;
-      margin-bottom: 1rem !important;
-    }
-  
-    p, td {
-      font-size: 1.3rem !important;
-    }
-  
-   
-    body {
-      font-size: 1.3rem !important; 
-    }
-    a:after {
-      content: none !important;
-    }
-    @page{
-      size: A4;
-      margin:0mm;
-  }
-  }
-  @layer base {
-  :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    
-    }
-  .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    
-    }
-    
 }
-  @layer base {
+.legend-container {
+  width: max-content;
+  transition: transform 0.3s ease-in-out;
+}
+
+.legend-container.translate-x-full {
+  transform: translateX(100%);
+}
+
+.legend-container.translate-x-0 {
+  transform: translateX(0);
+}
+
+.legend-toggle-button {
+  position: absolute;
+  top: -6px;
+  left: -2rem;
+  transition: transform 0.3s ease-in-out;
+  height: 32px;
+}
+
+.chevron-icon.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.chevron-icon.rotate-0 {
+  transform: rotate(0deg);
+}
+
+.chevron-icon {
+  position: relative;
+  top: -25%;
+}
+
+.flex-col {
+  transform: translateY(-10%);
+}
+/* print view styling  */
+@media print {
+  .print:hidden,
+  .legend,
+  .credits,
+  .navbar {
+    display: none !important;
+  }
+
+  .credits {
+    page-break-before: auto;
+  }
+  .print-legend {
+    z-index: 100;
+  }
+
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .fixed {
+    display: none;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    height: 40%;
+    margin-top: 0 !important;
+  }
+
+  h1.print {
+    margin-top: 20rem !important;
+  }
+  th,
+  td {
+    border: 1px solid #000 !important;
+    padding: 15px !important;
+    text-align: left !important;
+  }
+
+  .print-legend {
+    transform: translateY(100%);
+    text-align: center;
+    display: block !important;
+    font-size: 0.5rem !important;
+  }
+
+  .print-legend p {
+    margin-top: 8px !important;
+    font-size: 1.2rem !important;
+  }
+  .print-legend h1 {
+    margin-bottom: 20px !important;
+    font-size: 1.5rem !important;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  p,
+  td {
+    font-size: 1.3rem !important;
+  }
+
+  body {
+    font-size: 1.3rem !important;
+  }
+  a:after {
+    content: none !important;
+  }
+  @page {
+    size: A4;
+    margin: 0mm;
+  }
+}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+@layer base {
   * {
     @apply border-border;
-    
-    }
+  }
   body {
     @apply bg-background text-foreground;
-    
-    }
-    
+  }
 }
