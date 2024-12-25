@@ -35,7 +35,7 @@ export default function Login() {
           placeholder="Podaj hasło"
         />
         <button type="Wprowadź" className="ui text-white py-2 px-4 rounded">
-          Submit
+          Zaloguj
         </button>
         {error && <p className="text-red-500 mt-2">{error}</p>}
       </form>

@@ -30,7 +30,7 @@ const MainLayout = ({ children }) => {
         </div>
 
         {/* Main content */}
-        <div className="pt-24">{children}</div>
+        <div className="mt-24">{children}</div>
 
         {/* Footer credits */}
         <div className="credits font-Roboto fixed right-1 bottom-0 text-sm md:text-base font-extralight italic">

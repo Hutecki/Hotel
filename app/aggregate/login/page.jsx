@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { authenticate } from "@/services/authenticate"; // Import the server action
-export default function Login() {
+export default function LoginAggregate() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
@@ -11,7 +11,7 @@ export default function Login() {
 
     if (response.success) {
       // Redirect to the home page or another protected page
-      window.location.href = "/";
+      window.location.href = "/aggregate";
     } else {
       setError(response.message);
     }
@@ -35,7 +35,7 @@ export default function Login() {
           placeholder="Podaj hasło"
         />
         <button type="Wprowadź" className="ui text-white py-2 px-4 rounded">
-          Submit
+          Zaloguj
         </button>
         {error && <p className="text-red-500 mt-2">{error}</p>}
       </form>

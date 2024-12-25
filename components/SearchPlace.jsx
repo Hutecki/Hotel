@@ -9,7 +9,7 @@ const SearchPlace = () => {
 
   const handleSearchChange = (e) => {
     const input = e.target.value;
-    const formattedInput = input.trim().replace(/\s+/g, "_"); // Replace spaces with underscores
+    const formattedInput = input.trim().replace(/\s+/g, "_").toLowerCase(); // Replace spaces with underscores
     setSearchTerm(input);
     if (formattedInput === "") {
       setUrl("/aggregate/listingsAggregates");
@@ -45,7 +45,7 @@ const SearchPlace = () => {
           id="navigate-button"
           className="ui p-2 text-white rounded max-w-xs"
         >
-          Sprawdź agregat
+          Przejdź do agregatu
         </button>
       </Link>
     </div>

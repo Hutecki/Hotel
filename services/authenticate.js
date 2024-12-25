@@ -23,7 +23,7 @@ export async function authenticate(password) {
     });
     return { success: true };
   } else {
-    return { success: false, message: "Incorrect password" };
+    return { success: false, message: "nieprawidłowe hasło" };
   }
 }
 

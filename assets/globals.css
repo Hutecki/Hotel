@@ -84,6 +84,18 @@ button.ui {
   justify-content: start;
 }
 @media (max-width: 763px) {
+  .Switch {
+    bottom: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: flex;
+    flex-direction: row !important;
+  }
+  .Switch label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 0px 6px 0 6px;
+  }
   .ui-Home-Container {
     left: 90%;
   }

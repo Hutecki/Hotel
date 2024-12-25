@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Switch } from "@/components/ui/switch";
-
+import { Label } from "./ui/label";
 const SearchSwitch = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -36,7 +36,13 @@ const SearchSwitch = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center absolute left-[13rem] space-y-1 md:space-y-0 md:flex-row md:space-x-2  top-[40%]">
+    <div className=" Switch flex flex-col items-center absolute right-2  justify-start space-y-1 md:space-y-0 md:flex-row md:space-x-2 top-[40%]">
+      <label
+        htmlFor="change-search"
+        className="text-base font-medium text-gray-700 sm:ml-2 sm:text-xs"
+      >
+        Pokoje
+      </label>
       <Switch
         id="change-search"
         checked={isVrvMode}
@@ -44,9 +50,9 @@ const SearchSwitch = () => {
       />
       <label
         htmlFor="change-search"
-        className="text-sm font-medium text-gray-700 sm:ml-2"
+        className="text-base font-medium text-gray-700 sm:ml-2 sm:text-xs"
       >
-        Zmień wyszukiwanie
+        Agregaty
       </label>
     </div>
   );
