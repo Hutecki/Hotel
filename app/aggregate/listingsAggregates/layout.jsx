@@ -13,7 +13,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import AggregateForm from "@/components/aggregateForm";
+import AggregateForm from "@/components/AggregateForm";
 
 const AggregateListingLayout = ({ children }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
