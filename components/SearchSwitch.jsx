@@ -36,7 +36,7 @@ const SearchSwitch = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center absolute left-[15rem] space-y-1 md:space-y-0 md:flex-row md:space-x-2 top-8">
+    <div className="flex flex-col items-center justify-center absolute left-[13rem] space-y-1 md:space-y-0 md:flex-row md:space-x-2  top-[40%]">
       <Switch
         id="change-search"
         checked={isVrvMode}
