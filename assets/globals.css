@@ -85,9 +85,10 @@ button.ui {
 }
 @media (max-width: 763px) {
   .Switch {
-    bottom: 50% !important;
-    top: 50% !important;
-    transform: translate(-30%, -30%) !important;
+    position: fixed !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    top: auto !important;
     display: flex;
     flex-direction: row !important;
   }
