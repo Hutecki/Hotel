@@ -4,14 +4,6 @@ import Link from "next/link";
 import { FaHome, FaPen } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import RoomEditForm from "@/components/RoomEditForm";
 import Room from "@/models/Room";
 import connectDB from "@/config/database";

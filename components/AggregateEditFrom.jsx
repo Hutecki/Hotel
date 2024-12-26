@@ -1,9 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { FaPen } from "react-icons/fa";
 import updateAggregate from "@/app/actions/updateAggregate";
 
 const AggregateEditForm = ({ aggregate }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     VRV: aggregate.VRV,
     Zabezpieczenie: aggregate.Zabezpieczenie || "",
@@ -19,103 +28,116 @@ const AggregateEditForm = ({ aggregate }) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = new FormData();
-    form.append("Zabezpieczenie", formData.Zabezpieczenie);
-    form.append("Pomieszczenie", formData.Pomieszczenie);
-    form.append(
-      "Places",
-      JSON.stringify(formData.Places.split(",").map((place) => place.trim())) // Convert back to array
-    );
+  const handleSubmit = async (formData) => {
+    setIsSubmitting(true);
 
     try {
-      await updateAggregate(aggregate.VRV, form); // Update by VRV
-      // Revalidate the current path to reflect changes
-      const { revalidatePath } = await import("next/cache");
-      revalidatePath(`/aggregate/listingsAggregates/${aggregate.VRV}`);
+      const updatedForm = new FormData();
+      updatedForm.append("Zabezpieczenie", formData.Zabezpieczenie);
+      updatedForm.append("Pomieszczenie", formData.Pomieszczenie);
+      updatedForm.append(
+        "Places",
+        JSON.stringify(formData.Places.split(",").map((place) => place.trim()))
+      );
+
+      await updateAggregate(aggregate.VRV, updatedForm); // Update aggregate
+      window.location.reload(); // Refresh the page to reflect changes
     } catch (error) {
       console.error("Failed to update aggregate:", error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-      <div>
-        <label
-          htmlFor="VRV"
-          className="block text-sm font-medium text-gray-700 mt-5"
-        >
-          VRV
-        </label>
-        <input
-          type="text"
-          name="VRV"
-          id="VRV"
-          value={formData.VRV}
-          disabled // Make VRV read-only
-          className="mt-1 p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
+    <Dialog>
+      {/* Trigger Button */}
+      <DialogTrigger asChild>
+        <button className="edit_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg">
+          <FaPen size={17} />
+        </button>
+      </DialogTrigger>
 
-      <div>
-        <label
-          htmlFor="Zabezpieczenie"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Zabezpieczenie
-        </label>
-        <input
-          type="text"
-          name="Zabezpieczenie"
-          id="Zabezpieczenie"
-          value={formData.Zabezpieczenie}
-          onChange={handleChange}
-          className="mt-1 p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
+      {/* Dialog Content */}
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Edytuj Agregat: {aggregate.VRV}</DialogTitle>
+        </DialogHeader>
 
-      <div>
-        <label
-          htmlFor="Pomieszczenie"
-          className="block text-sm font-medium text-gray-700"
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit(formData);
+          }}
+          className="space-y-4"
         >
-          Pomieszczenie
-        </label>
-        <input
-          type="text"
-          name="Pomieszczenie"
-          id="Pomieszczenie"
-          value={formData.Pomieszczenie}
-          onChange={handleChange}
-          className="mt-1 p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
+          <div>
+            <label htmlFor="VRV" className="block font-medium mb-1">
+              VRV
+            </label>
+            <input
+              type="text"
+              name="VRV"
+              id="VRV"
+              value={formData.VRV}
+              disabled
+              className="w-full border-2 border-gray-300 rounded-md p-2 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B]"
+            />
+          </div>
 
-      <div>
-        <label
-          htmlFor="Places"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Pokoje
-        </label>
-        <textarea
-          name="Places"
-          id="Places"
-          value={formData.Places}
-          onChange={handleChange}
-          className="mt-1 p-2 border border-gray-300 rounded w-full"
-          rows="3"
-        />
-      </div>
+          <div>
+            <label htmlFor="Zabezpieczenie" className="block font-medium mb-1">
+              Zabezpieczenie
+            </label>
+            <input
+              type="text"
+              name="Zabezpieczenie"
+              id="Zabezpieczenie"
+              value={formData.Zabezpieczenie}
+              onChange={handleChange}
+              className="w-full border-2 border-gray-300 rounded-md p-2 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B]"
+              required
+            />
+          </div>
 
-      <button
-        type="submit"
-        className="bg-[#C19A6B] text-white p-2 rounded w-full  hover:shadow-md"
-      >
-        Save Changes
-      </button>
-    </form>
+          <div>
+            <label htmlFor="Pomieszczenie" className="block font-medium mb-1">
+              Pomieszczenie
+            </label>
+            <input
+              type="text"
+              name="Pomieszczenie"
+              id="Pomieszczenie"
+              value={formData.Pomieszczenie}
+              onChange={handleChange}
+              className="w-full border-2 border-gray-300 rounded-md p-2 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B]"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="Places" className="block font-medium mb-1">
+              Pokoje
+            </label>
+            <textarea
+              name="Places"
+              id="Places"
+              value={formData.Places}
+              onChange={handleChange}
+              className="w-full border-2 border-gray-300 rounded-md p-2 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B]"
+              rows="3"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-[#C19A6B] text-white py-2 rounded-md hover:shadow-md"
+          >
+            {isSubmitting ? "Zapisywanie..." : "Zapisz dane"}
+          </button>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };
 

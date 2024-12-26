@@ -5,22 +5,9 @@ import Link from "next/link";
 import { FaHome, FaPlus } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import AggregateForm from "@/components/AggregateForm";
 
 const AggregateListingLayout = ({ children }) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const closeDialog = () => setIsDialogOpen(false);
-  const openDialog = () => setIsDialogOpen(true);
-
   return (
     <>
       <div className="fixed navbar top-0 left-0 bg-white z-50 shadow-md border-b border-gray-300">
@@ -38,25 +25,7 @@ const AggregateListingLayout = ({ children }) => {
           >
             <FaHome size={32} className="ui-Home" />
           </Link>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <button
-                onClick={openDialog}
-                className="add_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C19A6B]"
-              >
-                <FaPlus size={20} />
-              </button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Dodaj nowy pokój</DialogTitle>
-                <DialogDescription>
-                  Wypełnij dane dla nowego pokoju
-                </DialogDescription>
-              </DialogHeader>
-              <AggregateForm closeDialog={closeDialog} />
-            </DialogContent>
-          </Dialog>
+          <AggregateForm />
         </div>
       </div>
 

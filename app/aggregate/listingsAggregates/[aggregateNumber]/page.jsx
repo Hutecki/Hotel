@@ -69,7 +69,9 @@ const AggregatePage = async ({ params }) => {
               {aggregate.Places && aggregate.Places.length > 0
                 ? aggregate.Places.map((place, index) => {
                     // Normalize the place name for comparison
-                    const normalizedPlace = place.replace(/\s+/g, "_");
+                    const normalizedPlace = place
+                      .replace(/\s+/g, "_")
+                      .toLowerCase();
                     const isValid = validPlaceNumbers.includes(normalizedPlace);
 
                     return isValid ? (

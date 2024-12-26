@@ -4,14 +4,6 @@ import Link from "next/link";
 import { FaHome, FaPen } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import AggregateEditForm from "@/components/AggregateEditFrom";
 import Aggregate from "@/models/Aggregate";
 import connectDB from "@/config/database";
@@ -44,24 +36,7 @@ const AggregateLayout = async ({ children, params }) => {
           >
             <FaHome size={32} className="ui-Home" />
           </Link>
-          {aggregate && (
-            <Dialog>
-              <DialogTrigger asChild>
-                <button className="edit_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg">
-                  <FaPen size={17} />
-                </button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader className="mb-4">
-                  <DialogTitle>Aktualizuj agregat</DialogTitle>
-                  <DialogDescription>
-                    Aktualizuj dane agregatu: {aggregate.VRV}
-                  </DialogDescription>
-                </DialogHeader>
-                <AggregateEditForm aggregate={aggregate} />
-              </DialogContent>
-            </Dialog>
-          )}
+          <AggregateEditForm aggregate={aggregate} />
         </div>
       </div>
 
