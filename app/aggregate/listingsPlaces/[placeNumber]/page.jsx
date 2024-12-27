@@ -15,7 +15,7 @@ const PlacePage = async ({ params }) => {
   }
 
   if (!placeNumber) {
-    redirect("/err");
+    redirect("/aggregate/err");
   }
   await connectDB();
 
@@ -28,14 +28,6 @@ const PlacePage = async ({ params }) => {
 
   return (
     <div className="main flex flex-col justify-start items-center h-screen p-4 mt-10">
-      <div className="print-legend hidden print:block absolute top-0 right-0 text-right text-xs">
-        <h1>Legenda:</h1>
-        <p>WG - Winda Główna</p>
-        <p>WS - Winda Szklana</p>
-        <p>WB - Winda Biblioteczna</p>
-        <p>SCH - Schody</p>
-      </div>
-
       <h1 className="print text-4xl md:text-5xl mb-6">
         Pokój {place.Pokoj.replace(/_/g, " ")}
       </h1>

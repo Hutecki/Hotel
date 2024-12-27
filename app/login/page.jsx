@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { authenticate } from "@/services/authenticate"; // Import the server action
+
 export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -10,8 +11,14 @@ export default function Login() {
     const response = await authenticate(password);
 
     if (response.success) {
-      // Redirect to the home page or another protected page
-      window.location.href = "/";
+      // Check the value of the 'vrvMode' cookie to determine the redirection path
+      const vrvModeCookie = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("vrvMode="))
+        ?.split("=")[1];
+
+      const redirectPath = vrvModeCookie === "true" ? "/aggregate" : "/";
+      window.location.href = redirectPath; // Redirect based on the cookie value
     } else {
       setError(response.message);
     }
@@ -34,7 +41,7 @@ export default function Login() {
           className="p-2 border rounded mb-4 w-full"
           placeholder="Podaj hasło"
         />
-        <button type="Wprowadź" className="ui text-white py-2 px-4 rounded">
+        <button type="submit" className="ui text-white py-2 px-4 rounded">
           Zaloguj
         </button>
         {error && <p className="text-red-500 mt-2">{error}</p>}

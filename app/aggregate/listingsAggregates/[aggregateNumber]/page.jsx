@@ -11,7 +11,7 @@ const AggregatePage = async ({ params }) => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/aggregate/login"); // Redirect to login page if not authenticated
+    redirect("/login"); // Redirect to login page if not authenticated
   }
 
   await connectDB();
@@ -30,14 +30,6 @@ const AggregatePage = async ({ params }) => {
 
   return (
     <div className="main flex flex-col justify-start items-center h-screen mt-[8rem]">
-      <div className="print-legend hidden print:block absolute top-0 right-0 text-right text-xs">
-        <h1>Legenda:</h1>
-        <p>WG - Winda Główna</p>
-        <p>WS - Winda Szklana</p>
-        <p>WB - Winda Biblioteczna</p>
-        <p>SCH - Schody</p>
-      </div>
-
       <h1 className="print text-4xl md:text-5xl mb-6">
         Agregat {aggregate.VRV}
       </h1>

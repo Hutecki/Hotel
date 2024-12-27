@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Switch } from "@/components/ui/switch";
-import { Label } from "./ui/label";
 
 const SearchSwitch = () => {
   const router = useRouter();
@@ -12,6 +11,9 @@ const SearchSwitch = () => {
 
   // Load the initial state from the cookie and handle redirection on page load
   useEffect(() => {
+    // Exclude /login from checking
+    if (pathname === "/login") return;
+
     const savedState = document.cookie
       .split("; ")
       .find((row) => row.startsWith("vrvMode="))
@@ -36,7 +38,7 @@ const SearchSwitch = () => {
     router.push(checked ? "/aggregate" : "/");
   };
 
-  // Render the Switch component only if the path is /aggregate
+  // Render the Switch component only if the path is /aggregate or /
   if (pathname !== "/aggregate" && pathname !== "/") {
     return null;
   }

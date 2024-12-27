@@ -6,7 +6,7 @@ const HomePageAggregate = async () => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/aggregate/login"); // Redirect to login page if not authenticated
+    redirect("/login"); // Redirect to login page if not authenticated
   }
   return (
     <div className="flex flex-col justify-center items-center h-screen">

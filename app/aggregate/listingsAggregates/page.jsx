@@ -7,7 +7,7 @@ const AggregatePage = async () => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/aggregate/login"); // Redirect to login page if not authenticated
+    redirect("/login"); // Redirect to login page if not authenticated
   }
   await connectDB();
 
