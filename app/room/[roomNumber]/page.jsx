@@ -8,7 +8,7 @@ const RoomPage = async ({ params }) => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/login"); // Redirect to login page if not authenticated
+    redirect("/login");
   }
   const stairsRooms = [
     "145",
@@ -28,7 +28,6 @@ const RoomPage = async ({ params }) => {
     "326",
   ];
 
-  // Validate the room if is number first
   if (isNaN(roomNumber)) {
     return redirect("/err");
   }
@@ -37,7 +36,6 @@ const RoomPage = async ({ params }) => {
 
   const room = await Room.findOne({ Pokoj: roomNumber }).lean();
 
-  //  check if room at given number exists
   if (!room) {
     return redirect("/err");
   }
@@ -54,7 +52,6 @@ const RoomPage = async ({ params }) => {
         <p>SCH - Schody</p>
       </div>
 
-      {/* <PrintButton /> */}
       <h1 className="print text-4xl md:text-5xl mb-6">Pokój {room.Pokoj}</h1>
       <table className="table-auto border-collapse border border-gray-300 w-full max-w-md md:max-w-lg lg:max-w-xl">
         <tbody>

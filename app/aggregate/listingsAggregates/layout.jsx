@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import "@/assets/globals.css";
 import Link from "next/link";
-import { FaHome, FaPlus } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
 import AggregateForm from "@/components/AggregateForm";

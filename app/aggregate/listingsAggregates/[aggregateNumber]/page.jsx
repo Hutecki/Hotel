@@ -11,21 +11,19 @@ const AggregatePage = async ({ params }) => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/login"); // Redirect to login page if not authenticated
+    redirect("/login");
   }
 
   await connectDB();
 
-  // Fetch the aggregate
   const aggregate = await Aggregate.findOne({ VRV: aggregateNumber }).lean();
   if (!aggregate) {
     return redirect("/aggregate/err");
   }
 
-  // Fetch all valid places
   const validPlaces = await Place.find({}, { Pokoj: 1 }).lean();
-  const validPlaceNumbers = validPlaces.map(
-    (place) => place.Pokoj.replace(/\s+/g, "_") // Normalize database places to match URL format
+  const validPlaceNumbers = validPlaces.map((place) =>
+    place.Pokoj.replace(/\s+/g, "_")
   );
 
   return (
@@ -60,7 +58,6 @@ const AggregatePage = async ({ params }) => {
             <td className="p-2 md:p-4 break-words text-base md:text-lg">
               {aggregate.Places && aggregate.Places.length > 0
                 ? aggregate.Places.map((place, index) => {
-                    // Normalize the place name for comparison
                     const normalizedPlace = place
                       .replace(/\s+/g, "_")
                       .toLowerCase();

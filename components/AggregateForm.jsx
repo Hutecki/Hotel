@@ -21,12 +21,12 @@ const AggregateForm = () => {
     setIsSubmitting(true);
 
     try {
-      await addAggregate(formData); // Add the aggregate
-      setIsDialogOpen(false); // Close the dialog after successful submission
+      await addAggregate(formData);
+      setIsDialogOpen(false);
     } catch (error) {
       console.error("Failed to add aggregate:", error);
     } finally {
-      setIsSubmitting(false); // Ensure the button is re-enabled
+      setIsSubmitting(false);
     }
   };
 

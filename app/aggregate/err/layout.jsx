@@ -1,4 +1,3 @@
-// app/layout.jsx (Global Layout)
 import React from "react";
 import "@/assets/globals.css";
 import Link from "next/link";
@@ -21,7 +20,10 @@ const MainLayout = ({ children }) => {
             height={100}
           />
           {/* Home Icon Link */}
-          <Link className="ui-Home-Container absolute left-[10rem]" href="/">
+          <Link
+            className="ui-Home-Container absolute left-[10rem]"
+            href="/aggregate"
+          >
             <FaHome size={32} className="ui-Home" />
           </Link>
         </div>

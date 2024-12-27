@@ -7,11 +7,10 @@ const RoomPage = async () => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/login"); // Redirect to login page if not authenticated
+    redirect("/login");
   }
   await connectDB();
 
-  // Fetch rooms and sort by Pokoj (ascending order)
   const rooms = await Room.find({}).sort({ Pokoj: 1 }).lean();
 
   return (

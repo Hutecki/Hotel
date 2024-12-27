@@ -1,13 +1,12 @@
 import React from "react";
 import "@/assets/globals.css";
 import Link from "next/link";
-import { FaHome, FaPen } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
 import RoomEditForm from "@/components/RoomEditForm";
 import Room from "@/models/Room";
 import connectDB from "@/config/database";
-export const dynamic = "force-dynamic"; // Disable wrapping from parent layouts
 import { redirect } from "next/navigation";
 import RoomExtras from "@/components/RoomExtras";
 
@@ -18,11 +17,9 @@ const RoomLayout = async ({ children, params }) => {
   }
   await connectDB();
 
-  // Fetch the current room details and convert it to plain JSON
-
   const room = await Room.findOne({ Pokoj: params.roomNumber }).lean();
   if (room && room._id) {
-    room._id = room._id.toString(); // Convert _id to a string
+    room._id = room._id.toString();
   }
 
   return (

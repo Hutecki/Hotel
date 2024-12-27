@@ -31,7 +31,7 @@ const RoomEditForm = ({ room }) => {
     } catch (error) {
       console.error("Failed to update room:", error);
     } finally {
-      setIsSubmitting(false); // Ensure the button is re-enabled
+      setIsSubmitting(false);
     }
   };
 

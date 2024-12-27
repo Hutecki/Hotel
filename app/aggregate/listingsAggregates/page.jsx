@@ -7,11 +7,10 @@ const AggregatePage = async () => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/login"); // Redirect to login page if not authenticated
+    redirect("/login");
   }
   await connectDB();
 
-  // Fetch rooms and sort by Pokoj (ascending order)
   const aggregates = await Aggregate.find({}).lean();
   return (
     <div className="flex flex-col items-center justify-start min-h-screen mt-10">

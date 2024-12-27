@@ -1,29 +1,13 @@
 import React from "react";
 import "@/assets/globals.css";
 import Link from "next/link";
-import { FaHome, FaPen } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import Room from "@/models/Room";
 import connectDB from "@/config/database";
-export const dynamic = "force-dynamic"; // Disable wrapping from parent layouts
 
-const PlaceLayout = async ({ children, params }) => {
+const PlaceLayout = async ({ children }) => {
   await connectDB();
-
-  // Fetch the current room details and convert it to plain JSON
-  const room = await Room.findOne({ Pokoj: params.roomNumber }).lean();
-  if (room && room._id) {
-    room._id = room._id.toString(); // Convert _id to a string
-  }
 
   return (
     <div className="room-detail">

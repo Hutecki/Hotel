@@ -20,15 +20,15 @@ p.Alt {
   align-items: center;
   min-height: 100vh;
   background-color: transparent;
-  /* Optional: Set background color */
+ 
 }
 .navbar {
   width: 100%;
 }
 .loading-image {
-  width: 160px; /* Adjust size as needed */
-  height: 240px; /* Adjust size as needed */
-  animation: scale 0.7s infinite; /* Animation name, duration, and repetition */
+  width: 160px; 
+  height: 240px; 
+  animation: scale 0.7s infinite; 
 }
 
 @keyframes scale {
@@ -79,10 +79,7 @@ button.ui {
 .ui-Print:hover {
   color: rgba(193, 154, 107, 0.9) !important;
 }
-/* Phone view styling */
-.main {
-  justify-content: start;
-}
+/*Telefon */
 @media (max-width: 763px) {
   .Switch {
     position: fixed !important;

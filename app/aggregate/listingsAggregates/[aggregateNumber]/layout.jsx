@@ -1,7 +1,7 @@
 import React from "react";
 import "@/assets/globals.css";
 import Link from "next/link";
-import { FaHome, FaPen } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
 import AggregateEditForm from "@/components/AggregateEditFrom";

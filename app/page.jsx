@@ -6,7 +6,7 @@ const HomePage = async () => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/login"); // Redirect to login page if not authenticated
+    redirect("/login");
   }
   return (
     <div className="flex flex-col justify-center items-center h-screen">

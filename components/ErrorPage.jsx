@@ -18,7 +18,7 @@ const ErrorPage = ({
             <p className="text-gray-500 text-xl mb-10">{message}</p>
 
             <Link
-              className="ui-Link text-white font-bold py-4 px-6 rounded"
+              className="ui-Link  font-bold py-4 px-6 rounded"
               href={linkHref}
             >
               {linkText}

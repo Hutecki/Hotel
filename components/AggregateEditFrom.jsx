@@ -17,7 +17,7 @@ const AggregateEditForm = ({ aggregate }) => {
     VRV: aggregate.VRV,
     Zabezpieczenie: aggregate.Zabezpieczenie || "",
     Pomieszczenie: aggregate.Pomieszczenie || "",
-    Places: aggregate.Places ? aggregate.Places.join(", ") : "", // Convert array to comma-separated string
+    Places: aggregate.Places ? aggregate.Places.join(", ") : "",
   });
 
   const handleChange = (e) => {

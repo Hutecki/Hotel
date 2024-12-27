@@ -1,4 +1,3 @@
-// app/layout.jsx (Global Layout)
 import React from "react";
 import "@/assets/globals.css";
 import Link from "next/link";

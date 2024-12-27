@@ -11,7 +11,7 @@ const PlacePage = async ({ params }) => {
   const isAuthenticated = await checkAuthentication();
 
   if (!isAuthenticated) {
-    redirect("/login"); // Redirect to login page if not authenticated
+    redirect("/login");
   }
 
   if (!placeNumber) {

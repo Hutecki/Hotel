@@ -9,9 +9,7 @@ const SearchSwitch = () => {
   const pathname = usePathname();
   const [isVrvMode, setIsVrvMode] = useState(false);
 
-  // Load the initial state from the cookie and handle redirection on page load
   useEffect(() => {
-    // Exclude /login from checking
     if (pathname === "/login") return;
 
     const savedState = document.cookie
@@ -22,7 +20,6 @@ const SearchSwitch = () => {
 
     setIsVrvMode(isVrvEnabled);
 
-    // Redirect to /aggregate if the toggle is in the checked state
     if (isVrvEnabled && !pathname.startsWith("/aggregate")) {
       router.push("/aggregate");
     }
@@ -31,14 +28,11 @@ const SearchSwitch = () => {
   const handleToggle = (checked) => {
     setIsVrvMode(checked);
 
-    // Save the state in a cookie
-    document.cookie = `vrvMode=${checked}; path=/; max-age=31536000`; // 1 year
+    document.cookie = `vrvMode=${checked}; path=/; max-age=31536000`;
 
-    // Redirect based on the toggle state
     router.push(checked ? "/aggregate" : "/");
   };
 
-  // Render the Switch component only if the path is /aggregate or /
   if (pathname !== "/aggregate" && pathname !== "/") {
     return null;
   }

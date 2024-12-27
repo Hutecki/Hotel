@@ -23,25 +23,23 @@ const RoomForm = () => {
     setIsSubmitting(true);
 
     try {
-      await addRoom(formData); // Add the room
-      setIsDialogOpen(false); // Close the dialog after successful submission
+      await addRoom(formData);
+      setIsDialogOpen(false);
     } catch (error) {
       console.error("Failed to add room:", error);
     } finally {
-      setIsSubmitting(false); // Ensure the button is re-enabled
+      setIsSubmitting(false);
     }
   };
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      {/* Trigger Button */}
       <DialogTrigger asChild>
         <button className="add_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C19A6B]">
           <FaPlus size={20} />
         </button>
       </DialogTrigger>
 
-      {/* Dialog Content */}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Dodaj nowy pokój</DialogTitle>
