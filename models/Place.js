@@ -21,6 +21,10 @@ const PlaceSchema = new Schema({
     required: true,
     ref: "Aggregate", // Reference to the Aggregate schema
   },
+  Powiazanie: {
+    type: String,
+    required: true,
+  },
 });
 
 const Place = models?.Place || model("Place", PlaceSchema);

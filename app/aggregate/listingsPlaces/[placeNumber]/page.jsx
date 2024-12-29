@@ -68,19 +68,18 @@ const PlacePage = async ({ params }) => {
             <>
               <tr className="border-t">
                 <td className="p-2 md:p-4 border-r font-medium text-base md:text-lg">
-                  Zabezpieczenie:
-                </td>
-                <td className="p-2 md:p-4 break-words text-base md:text-lg">
-                  {aggregate.Zabezpieczenie}
-                </td>
-              </tr>
-
-              <tr className="border-t">
-                <td className="p-2 md:p-4 border-r font-medium text-base md:text-lg">
                   Pomieszczenie:
                 </td>
                 <td className="p-2 md:p-4 break-words text-base md:text-lg">
                   {aggregate.Pomieszczenie}
+                </td>
+              </tr>
+              <tr className="border-t">
+                <td className="p-2 md:p-4 border-r font-medium text-base md:text-lg">
+                  Zabezpieczenie:
+                </td>
+                <td className="p-2 md:p-4 break-words text-base md:text-lg">
+                  {aggregate.Zabezpieczenie}
                 </td>
               </tr>
             </>
