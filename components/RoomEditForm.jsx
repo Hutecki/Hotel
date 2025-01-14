@@ -40,7 +40,7 @@ const RoomEditForm = ({ room }) => {
       <DialogTrigger asChild>
         <button
           onClick={handleDialogOpen}
-          className="edit_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg"
+          className="edit_button absolute ui-Link right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg"
         >
           <FaPen size={17} />
         </button>

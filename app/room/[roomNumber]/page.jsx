@@ -3,6 +3,7 @@ import connectDB from "@/config/database";
 import Room from "@/models/Room";
 import { redirect } from "next/navigation";
 import { checkAuthentication } from "@/services/authenticate";
+
 const RoomPage = async ({ params }) => {
   const { roomNumber } = params;
   const isAuthenticated = await checkAuthentication();

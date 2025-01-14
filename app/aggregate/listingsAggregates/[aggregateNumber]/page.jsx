@@ -30,7 +30,7 @@ const AggregatePage = async ({ params }) => {
   }, {});
 
   return (
-    <div className="main flex flex-col justify-start items-center h-screen mt-[8rem]">
+    <div className="main flex flex-col justify-start items-center h-screen mt-[8rem] relative">
       <h1 className="print text-4xl md:text-5xl mb-6">
         Agregat {aggregate.VRV}
       </h1>

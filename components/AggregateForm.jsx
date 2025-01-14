@@ -34,7 +34,7 @@ const AggregateForm = () => {
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       {/* Trigger Button */}
       <DialogTrigger asChild>
-        <button className="add_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C19A6B]">
+        <button className="add_button ui-Link absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C19A6B]">
           <FaPlus size={20} />
         </button>
       </DialogTrigger>

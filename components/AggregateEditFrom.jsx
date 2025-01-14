@@ -53,7 +53,7 @@ const AggregateEditForm = ({ aggregate }) => {
     <Dialog>
       {/* Trigger Button */}
       <DialogTrigger asChild>
-        <button className="edit_button absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg">
+        <button className="edit_button ui-Link absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg">
           <FaPen size={17} />
         </button>
       </DialogTrigger>
