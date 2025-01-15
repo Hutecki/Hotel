@@ -78,7 +78,7 @@ const AggregateForm = () => {
           />
           <textarea
             name="Places"
-            placeholder="Pokoje (comma-separated)"
+            placeholder="Pokoje (proszę rozdzielić przecinkiem)"
             className="w-full border-2 border-gray-300 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B] focus:outline-none p-2 rounded-md"
             rows="3"
           ></textarea>
