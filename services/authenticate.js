@@ -11,13 +11,12 @@ export async function authenticate(password) {
   const correctPassword = passwordData?.Password;
 
   if (password === correctPassword) {
-    // Set a secure cookie if the password matches
     cookies().set({
       name: "auth_token",
       value: "authenticated",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      maxAge: 36000, // 10 hour expiry
+      maxAge: 36000,
       path: "/",
       sameSite: "Strict",
     });

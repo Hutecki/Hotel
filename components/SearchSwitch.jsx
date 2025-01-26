@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Switch } from "@/components/ui/switch";
-
+import { setVrvMode, getVrvMode } from "@/services/vrvMode";
 const SearchSwitch = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -12,24 +12,22 @@ const SearchSwitch = () => {
   useEffect(() => {
     if (pathname === "/login") return;
 
-    const savedState = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("vrvMode="))
-      ?.split("=")[1];
-    const isVrvEnabled = savedState === "true";
+    // Read vrvMode from cookies
+    const fetchVrvMode = async () => {
+      const vrvMode = await getVrvMode();
+      setIsVrvMode(vrvMode);
+    };
 
-    setIsVrvMode(isVrvEnabled);
+    fetchVrvMode();
+  }, [pathname]);
 
-    if (isVrvEnabled && !pathname.startsWith("/aggregate")) {
-      router.push("/aggregate");
-    }
-  }, [pathname, router]);
-
-  const handleToggle = (checked) => {
+  const handleToggle = async (checked) => {
     setIsVrvMode(checked);
 
-    document.cookie = `vrvMode=${checked}; path=/; max-age=31536000`;
+    // Update vrvMode cookie
+    await setVrvMode(checked);
 
+    // Redirect based on the new vrvMode state
     router.push(checked ? "/aggregate" : "/");
   };
 

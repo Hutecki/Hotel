@@ -1,23 +1,23 @@
 "use client";
 import { useState } from "react";
 import { authenticate } from "@/services/authenticate";
-
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
+import { getVrvMode } from "@/services/vrvMode";
 export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await authenticate(password);
 
     if (response.success) {
-      const vrvModeCookie = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("vrvMode="))
-        ?.split("=")[1];
+      const vrvMode = await getVrvMode();
 
-      const redirectPath = vrvModeCookie === "true" ? "/aggregate" : "/";
-      window.location.href = redirectPath;
+      const redirectPath = vrvMode ? "/aggregate" : "/";
+      router.push(redirectPath);
     } else {
       setError(response.message);
     }

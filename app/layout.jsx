@@ -6,6 +6,9 @@ import { FaHome } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/assets/images/logo_1_png.png";
 import SearchSwitch from "@/components/SearchSwitch";
+export const metadata = {
+  title: "Aplikacja hotelowa",
+};
 const MainLayout = ({ children }) => {
   return (
     <html>
