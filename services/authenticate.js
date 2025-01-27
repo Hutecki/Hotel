@@ -16,7 +16,7 @@ export async function authenticate(password) {
       value: "authenticated",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      maxAge: 36000,
+      maxAge: 31536000,
       path: "/",
       sameSite: "Strict",
     });

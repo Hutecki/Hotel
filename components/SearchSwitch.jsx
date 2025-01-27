@@ -12,7 +12,6 @@ const SearchSwitch = () => {
   useEffect(() => {
     if (pathname === "/login") return;
 
-    // Read vrvMode from cookies
     const fetchVrvMode = async () => {
       const vrvMode = await getVrvMode();
       setIsVrvMode(vrvMode);
@@ -24,10 +23,8 @@ const SearchSwitch = () => {
   const handleToggle = async (checked) => {
     setIsVrvMode(checked);
 
-    // Update vrvMode cookie
     await setVrvMode(checked);
 
-    // Redirect based on the new vrvMode state
     router.push(checked ? "/aggregate" : "/");
   };
 
