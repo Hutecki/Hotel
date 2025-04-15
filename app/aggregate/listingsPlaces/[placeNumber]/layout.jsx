@@ -29,7 +29,7 @@ const PlaceLayout = async ({ children }) => {
         </div>
       </div>
 
-      <div className="h-screen">{children}</div>
+      <div className="pt-20">{children}</div>
     </div>
   );
 };

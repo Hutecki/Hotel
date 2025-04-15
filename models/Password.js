@@ -6,6 +6,10 @@ const PasswordSchema = new Schema({
     type: String,
     required: true,
   },
+  Name: {
+    type: String,
+    required: true,
+  },
 });
 
 // Check if the model exists before defining it

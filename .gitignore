@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-
+hash_passwords.js
 # testing
 /coverage
 

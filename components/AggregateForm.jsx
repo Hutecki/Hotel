@@ -1,3 +1,4 @@
+// components/AggregateForm.jsx
 "use client";
 
 import React, { useState } from "react";
@@ -12,14 +13,21 @@ import {
 import { FaPlus } from "react-icons/fa";
 import addAggregate from "@/app/actions/addAggregate";
 import { usePathname } from "next/navigation";
-const AggregateForm = () => {
+
+// ----> 1. Accept the 'canManage' prop from the parent Server Component
+const AggregateForm = ({ canManage }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const pathname = usePathname();
-  if (pathname !== "/aggregate/listingsAggregates") return null;
+
+  // ----> 2. Use the 'canManage' prop (and pathname) to decide if the component renders
+  if (!canManage || pathname !== "/aggregate/listingsAggregates") {
+    return null; // Render nothing if user doesn't have permission OR is on the wrong page
+  }
+
+  // Component logic remains the same...
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
-
     try {
       await addAggregate(formData);
       setIsDialogOpen(false);
@@ -31,15 +39,13 @@ const AggregateForm = () => {
   };
 
   return (
+    // Component JSX remains the same...
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      {/* Trigger Button */}
       <DialogTrigger asChild>
         <button className="add_button ui-Link absolute right-4 bg-[#C19A6B] text-white flex items-center justify-center rounded-full w-9 h-9 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C19A6B]">
           <FaPlus size={20} />
         </button>
       </DialogTrigger>
-
-      {/* Dialog Content */}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Dodaj nowy agregat</DialogTitle>
@@ -47,13 +53,8 @@ const AggregateForm = () => {
             Wypełnij dane dla nowego agregatu
           </DialogDescription>
         </DialogHeader>
-
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            handleSubmit(formData);
-          }}
+          action={handleSubmit} // Can use action directly now
           className="space-y-4"
         >
           <input
@@ -81,7 +82,7 @@ const AggregateForm = () => {
             placeholder="Pokoje (proszę rozdzielić przecinkiem)"
             className="w-full border-2 border-gray-300 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B] focus:outline-none p-2 rounded-md"
             rows="3"
-          ></textarea>
+          />
           <button
             type="submit"
             disabled={isSubmitting}

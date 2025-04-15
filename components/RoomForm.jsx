@@ -1,3 +1,4 @@
+// components/RoomForm.jsx
 "use client";
 
 import React, { useState } from "react";
@@ -13,20 +14,26 @@ import { FaPlus } from "react-icons/fa";
 import addRoom from "@/app/actions/addRoom";
 import { usePathname } from "next/navigation";
 
-const RoomForm = () => {
+// 1. Accept the 'canManage' prop
+const RoomForm = ({ canManage }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const pathname = usePathname();
-  if (pathname !== "/room") return null;
+
+  // 2. Check permission and path
+  if (!canManage || pathname !== "/room") {
+    // Ensure path check is correct for where this should appear
+    return null;
+  }
 
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
-
     try {
       await addRoom(formData);
       setIsDialogOpen(false);
     } catch (error) {
       console.error("Failed to add room:", error);
+      // Add user feedback
     } finally {
       setIsSubmitting(false);
     }
@@ -47,11 +54,7 @@ const RoomForm = () => {
         </DialogHeader>
 
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            handleSubmit(formData);
-          }}
+          action={handleSubmit} // Use action directly with Server Actions
           className="space-y-4"
         >
           <input
@@ -72,14 +75,12 @@ const RoomForm = () => {
             type="text"
             name="Winda"
             placeholder="Winda"
-            required
             className="w-full border-2 border-gray-300 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B] focus:outline-none p-2 rounded-md"
           />
           <input
             type="text"
             name="Atrybuty"
             placeholder="Atrybuty"
-            required
             className="w-full border-2 border-gray-300 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B] focus:outline-none p-2 rounded-md"
           />
           <input
@@ -89,7 +90,6 @@ const RoomForm = () => {
             required
             className="w-full border-2 border-gray-300 focus:border-[#C19A6B] focus:ring-2 focus:ring-[#C19A6B] focus:outline-none p-2 rounded-md"
           />
-
           <button
             type="submit"
             disabled={isSubmitting}

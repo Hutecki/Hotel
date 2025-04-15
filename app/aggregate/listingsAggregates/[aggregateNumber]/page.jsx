@@ -1,18 +1,12 @@
 import React from "react";
 import connectDB from "@/config/database";
 import { redirect } from "next/navigation";
-import { checkAuthentication } from "@/services/authenticate";
 import Aggregate from "@/models/Aggregate";
 import Place from "@/models/Place";
 import Link from "next/link";
 
 const AggregatePage = async ({ params }) => {
   const { aggregateNumber } = params;
-  const isAuthenticated = await checkAuthentication();
-
-  if (!isAuthenticated) {
-    redirect("/login");
-  }
 
   await connectDB();
 

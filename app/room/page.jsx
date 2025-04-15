@@ -1,14 +1,7 @@
 import HomeRoom from "@/components/HomeRoom";
 import connectDB from "@/config/database";
 import Room from "@/models/Room";
-import { redirect } from "next/navigation";
-import { checkAuthentication } from "@/services/authenticate";
 const RoomPage = async () => {
-  const isAuthenticated = await checkAuthentication();
-
-  if (!isAuthenticated) {
-    redirect("/login");
-  }
   await connectDB();
 
   const rooms = await Room.find({}).sort({ Pokoj: 1 }).lean();

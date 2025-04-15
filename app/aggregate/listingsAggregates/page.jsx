@@ -1,14 +1,8 @@
 import connectDB from "@/config/database";
 import Aggregate from "@/models/Aggregate";
-import { redirect } from "next/navigation";
-import { checkAuthentication } from "@/services/authenticate";
+
 import ShowAggregate from "@/components/ShowAggregate";
 const AggregatePage = async () => {
-  const isAuthenticated = await checkAuthentication();
-
-  if (!isAuthenticated) {
-    redirect("/login");
-  }
   await connectDB();
 
   const aggregates = await Aggregate.find({}).lean();
